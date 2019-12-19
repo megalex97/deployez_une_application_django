@@ -13,15 +13,6 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 import os
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
-from django.urls import path
-
-def trigger_error(request):
-    division_by_zero = 1 / 0
-
-urlpatterns = [
-    path('sentry-debug/', trigger_error),
-    # ...
-]
 
 sentry_sdk.init(
     dsn="https://5a1b7bdc109146048d4baff739b58bc7@sentry.io/1862240",
@@ -31,7 +22,6 @@ sentry_sdk.init(
     # django.contrib.auth) you may enable sending PII data.
     send_default_pii=True
 )
-
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
